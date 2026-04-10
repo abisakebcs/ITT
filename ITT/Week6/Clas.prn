@@ -1,0 +1,76 @@
+Script started on Friday 27 March 2026 11:16:37 AM IST
+[24bcs187@mepcolinux week6]$cat car.py
+class Car:
+   def __init__(self,car_name,car_no):
+      self.car_name = car_name
+      self.car_no = car_no
+   def drive(self):
+      print("Vroom")
+C = Car("Volkswagan",1234)
+C.drive()
+[24bcs187@mepcolinux week6]$python3 car.py
+Vroom
+[24bcs187@mepcolinux week6]$cat Book.py
+class Book:
+   def __init__(self,Book_Title,Book_Author):
+      self.Book_Title = Book_Title
+      self.Book_Author = Book_Author
+   def display(self):
+      print("Book Title:",self.Book_Title)
+      print("Book Author:",self.Book_Author)
+B = Book("The Leader In You","Dale Carnegie")
+B.display()
+[24bcs187@mepcolinux week6]$python3 Book.py
+Book Title: The Leader In You
+Book Author: Dale Carnegie
+[24bcs187@mepcolinux week6]$cat fan.py
+class Fan:
+   def __init__(self,Speed = "Medium"):
+      self.Speed = Speed
+   def status(self):
+      print("Status of Fan:",self.Speed)
+F1 = Fan()
+F1.status()
+
+F2 = Fan("High")
+F2.status()
+
+F3 = Fan("Low")
+F3.status()
+[24bcs187@mepcolinux week6]$python3 fan.py
+Status of Fan: Medium
+Status of Fan: High
+Status of Fan: Low
+[24bcs187@mepcolinux week6]$cat area.py
+class Rectangle:
+   def __init__(self,length,breadth):
+      self.length = length
+      self.breadth = breadth
+   def area(self):
+      print("Length:",self.length)
+      print("Breadth:",self.breadth)
+      print("Area of Rectangle:",self.length * self.breadth)
+R = Rectangle(7,3)
+R.area()
+[24bcs187@mepcolinux week6]$python3 area.py
+Length: 7
+Breadth: 3
+Area of Rectangle: 21
+[24bcs187@mepcolinux week6]$cat Inh.py
+class Animal:
+   def speak(self):
+      print("Tweet")
+class Bird(Animal):
+   def speak(self):
+      print("Chirp")
+a = Animal()
+a.speak()
+b = Bird()
+b.speak()
+[24bcs187@mepcolinux week6]$python3 Inh.py
+Tweet
+Chirp
+[24bcs187@mepcolinux week6]$exit
+exit
+
+Script done on Friday 27 March 2026 11:18:10 AM IST

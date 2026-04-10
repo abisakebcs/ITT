@@ -1,0 +1,255 @@
+Script started on Friday 27 March 2026 10:41:59 AM IST
+[24bcs187@mepcolinux week5]$cat pro_1.py
+from collections import Counter
+nums = [5,3,5,2,3,1,4,1,2]
+print("ARRAY:",nums)
+count = Counter(nums)
+unique = [num for num in nums if count[num] == 1]
+print("UNIQUE ELEMENT:",unique)
+[24bcs187@mepcolinux week5]$python3 pro_2..py
+ARRAY: [5, 3, 5, 2, 3, 1, 4, 1, 2]
+UNIQUE ELEMENT: [4]
+[24bcs187@mepcolinux week5]$cat pro_2.py
+from collections import Counter
+s = "aabbccddeeffgg"
+print("STRING:",s)
+freq = Counter(s)
+result = len(set(freq.values())) == 1
+print("EQUAL FREQUENCY:",result)
+[24bcs187@mepcolinux week5]$pty[K[Kython3 pro_2.py
+STRING: aabbccddeeffgg
+EQUAL FREQUENCY: True
+[24bcs187@mepcolinux week5]$cat pro_3.py
+from collections import Counter
+list1 = [1,2,3,4,5]
+list2 = [1,2,2,3,4,4,5]
+print("LIST 1:",list1)
+print("LIST 2:",list2)
+c1 = Counter(list1)
+c2 = Counter(list2)
+extra = c2 - c1
+print("EXTRA ELEMENTS:",list(extra.elements()))
+[24bcs187@mepcolinux week5]$python3 pro_3.py
+LIST 1: [1, 2, 3, 4, 5]
+LIST 2: [1, 2, 2, 3, 4, 4, 5]
+EXTRA ELEMENTS: [2, 4]
+[24bcs187@mepcolinux week5]$cat pro_4.py
+from collections import defaultdict
+words = ["python","java","go","c","ruby","php"]
+print("PROG_LANG_ARRAY:",words)
+group = defaultdict(list)
+for w in words:
+   group[len(w)].append(w)
+for k,v in sorted(group.items()):
+   print(k,"→",v)
+[24bcs187@mepcolinux week5]$python3 pro_4.py
+PROG_LANG_ARRAY: ['python', 'java', 'go', 'c', 'ruby', 'php']
+1 → ['c']
+2 → ['go']
+3 → ['php']
+4 → ['java', 'ruby']
+6 → ['python']
+[24bcs187@mepcolinux week5]$cat pro_5.py
+from collections import defaultdict
+data = [("Alice",85),("Bob",78),("Alice",92),("Bob",88)]
+print("DATA:",data)
+marks = defaultdict(list)
+for name,score in data:
+   marks[name].append(score)
+print("STUDENT MARKS:",dict(marks))
+[24bcs187@mepcolinux week5]$python3 pro_5.py
+DATA: [('Alice', 85), ('Bob', 78), ('Alice', 92), ('Bob', 88)]
+STUDENT MARKS: {'Alice': [85, 92], 'Bob': [78, 88]}
+[24bcs187@mepcolinux week5]$cat pro_6.py
+from collections import OrderedDict
+s = "swiss"
+print("STRING:",s)
+freq = OrderedDict()
+for ch in s:
+   freq[ch] = freq.get(ch,0) + 1
+for k,v in freq.items():
+   if v == 1:
+      print("FIRST NON-REPEATING CHAR:",k)
+      break
+[24bcs187@mepcolinux week5]$python3 pro_6.py
+STRING: swiss
+FIRST NON-REPEATING CHAR: w
+[24bcs187@mepcolinux week5]$cat pro_7.py
+from collections import deque
+nums = [1,2,3,4,5,6]
+window = 3
+dq = deque()
+sum_window = 0
+for i in range(len(nums)):
+   dq.append(nums[i])
+   sum_window += nums[i]
+   if len(dq) == window:
+      print("SLIDING WINDOW SUM:",sum_window)
+      sum_window -= dq.popleft()
+[24bcs187@mepcolinux week5]$python3 pro_7.py
+SLIDING WINDOW SUM: 6
+SLIDING WINDOW SUM: 9
+SLIDING WINDOW SUM: 12
+SLIDING WINDOW SUM: 15
+[24bcs187@mepcolinux week5]$cat pro_8.py
+from collections import deque
+s = "level"
+print("String:",s)
+dq = deque(s)
+pal = True
+while len(dq) > 1:
+   if dq.popleft() != dq.pop():
+      pal = False
+      break
+   print("Palindrome" if pal else "Not Palindrome")
+[24bcs187@mepcolinux week5]$python3 pro_8.py
+String: level
+Palindrome
+Palindrome
+[24bcs187@mepcolinux week5]$cat pro_9.py
+from collections import namedtuple
+Employee = namedtuple("Employee",["name","salary"])
+emps = [
+Employee("A",50000),
+Employee("B",75000),
+Employee("C",65000)
+]
+highest = max(emps, key=lambda x:x.salary)
+print("Highest salary:",highest)
+[24bcs187@mepcolinux week5]$python3 pro_9.py
+Highest salary: Employee(name='B', salary=75000)
+[24bcs187@mepcolinux week5]$cat pro_10.py
+from collections import ChainMap
+d1 = {"a":10,"b":20}
+d2 = {"b":30,"c":40}
+cm = ChainMap(d1,d2)
+print("Combined Dictionaries:",cm["b"])
+[24bcs187@mepcolinux week5]$python3 pro_10.py
+Combined Dictionaries: 20
+[24bcs187@mepcolinux week5]$cat pro_11.py
+import datetime
+year = 2028
+print("Year:",year)
+is_leap = datetime.date(year,1,1).replace(year=year).year % 4 == 0 and \
+(year % 100 != 0 or year % 400 == 0)
+print("Leap Year:",is_leap)
+[24bcs187@mepcolinux week5]$python3 pro_11.py
+Year: 2028
+Leap Year: True
+[24bcs187@mepcolinux week5]$cat pro_12.py
+from datetime import datetime
+today = datetime.now()
+print("Today:",today.strftime("%d-%B-%Y %A"))
+[24bcs187@mepcolinux week5]$python3 pro_12.py
+Today: 27-March-2026 Friday
+[24bcs187@mepcolinux week5]$cat pro_13.py
+from datetime import datetime
+d = datetime.strptime("2026-03-10","%Y-%m-%d")
+print("Week Number:",d.strftime("%U"))
+[24bcs187@mepcolinux week5]$python3 pro_13.py
+Week Number: 10
+[24bcs187@mepcolinux week5]$cat pro_14.py
+from datetime import datetime
+t1 = datetime.strptime("2026-03-10 10:00:00","%Y-%m-%d %H:%M:%S")
+t2 = datetime.strptime("2026-03-10 12:30:00","%Y-%m-%d %H:%M:%S")
+diff = (t2 - t1).total_seconds()
+print("Diff in Seconds:",int(diff))
+[24bcs187@mepcolinux week5]$python3 pro_14.py
+Diff in Seconds: 9000
+[24bcs187@mepcolinux week5]$cat pro_15.py
+from datetime import datetime, timedelta
+today = datetime.today()
+print("Next Five Days")
+for i in range(1,6):
+   print((today + timedelta(days=i)).strftime("%Y-%m-%d"))
+[24bcs187@mepcolinux week5]$python3 pro_15.py
+Next Five Days
+2026-03-28
+2026-03-29
+2026-03-30
+2026-03-31
+2026-04-01
+[24bcs187@mepcolinux week5]$cat pro_16.py
+from datetime import datetime
+d = datetime.strptime("2026-03-10","%Y-%m-%d")
+month = d.month - 1 or 12
+year = d.year if d.month != 1 else d.year - 1
+prev = d.replace(year=year, month=month)
+print("Previous Month Date:",prev.strftime("%Y-%m-%d"))
+[24bcs187@mepcolinux week5]$python3 pro_16.py
+Previous Month Date: 2026-02-10
+[24bcs187@mepcolinux week5]$cat pro_17.py
+from datetime import date, timedelta
+start = date(2025,1,1)
+end = date(2025,1,31)
+count = 0
+while start <= end:
+   if start.weekday() == 6:
+      count += 1
+   start += timedelta(days=1)
+print("Sundays Count:",count)
+[24bcs187@mepcolinux week5]$python3 pro_17.py
+Sundays Count: 4
+[24bcs187@mepcolinux week5]$cat pro_18.py
+from datetime import datetime
+d = datetime.strptime("2026-03-14","%Y-%m-%d")
+print(d)
+if d.weekday() >= 5:
+   print("Weekend")
+else:
+   print("Weekday")
+[24bcs187@mepcolinux week5]$python3 pro_19.py
+Daily Login Counter: Counter({datetime.date(2026, 3, 11): 3, datetime.date(2026, 3, 10): 2})
+[24bcs187@mepcolinux week5]$cat pro_20.py
+from collections import Counter
+from datetime import datetime
+logins = [
+"2026-03-10 10:00",
+"2026-03-10 12:00",
+"2026-03-11 09:30",
+"2026-03-11 11:45",
+"2026-03-11 14:00"
+]
+
+hours = [datetime.strptime(l,"%Y-%m-%d %H:%M").hour for l in logins]
+print("Most Frequent Login Hour:",Counter(hours).most_common(1))
+[24bcs187@mepcolinux week5]$python3 pro_21.py
+Monthly Event Counter: Counter({'January': 2, 'February': 2, 'March': 1})
+[24bcs187@mepcolinux week5]$cat pro_22.py
+from collections import defaultdict
+from datetime import datetime
+dates = ["2026-03-10","2026-03-11","2026-03-12"]
+group = defaultdict(list)
+for d in dates:
+   day = datetime.strptime(d,"%Y-%m-%d").strftime("%A")
+   group[day].append(d)
+print("Group Dates by Weekday:",dict(group))
+[24bcs187@mepcolinux week5]$python3 pro_23.py
+Oldest Date: 2024-01-01
+[24bcs187@mepcolinux week5]$cat pro_24.py
+from collections import Counter
+dates = ["2026-03-10","2026-03-10","2026-03-11"]
+dup = [d for d,c in Counter(dates).items() if c > 1]
+print("Duplicate Dates:",dup)
+[24bcs187@mepcolinux week5]$python3 pro_24.py
+Duplicate Dates: ['2026-03-10']
+[24bcs187@mepcolinux week5]$cat pro_25.py
+from datetime import datetime, timedelta
+activities = {
+"A":"2026-03-25 10:00",
+"B":"2026-03-26 08:00",
+"C":"2026-03-24 09:00"
+}
+now = datetime.strptime("2026-03-26 12:00","%Y-%m-%d %H:%M")
+recent = []
+for user,time in activities.items():
+   t = datetime.strptime(time,"%Y-%m-%d %H:%M")
+   if now - t <= timedelta(days=1):
+      recent.append(user)
+print("Recent Activity:",recent)
+[24bcs187@mepcolinux week5]$python3 pro_25.py
+Recent Activity: ['B']
+[24bcs187@mepcolinux week5]$exit
+exit
+
+Script done on Friday 27 March 2026 10:46:56 AM IST
